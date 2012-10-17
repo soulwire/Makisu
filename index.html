@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+    <title>Makisu</title>
+    <link href='http://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header id="header">
+        <hgroup>
+            <h1>Makisu</h1>
+            <h2>Conceptual CSS 3D Dropdown</h2>
+        </hgroup>
+    </header>
+
+    <section class="demo">
+
+        <dl class="list nigiri">
+            <dt>Nigiri</dt>
+            <dd>Maguro</dd>
+            <dd>Sake</dd>
+            <dd>Unagi</dd>
+            <dd>Buri</dd>
+            <dd>Suzuki</dd>
+            <dd>Saba</dd>
+            <dd>Iwashi</dd>
+            <dd>Kohada</dd>
+            <dd>Hirame</dd>
+            <dd>Tobiwo</dd>
+        </dl>
+
+        <dl class="list maki">
+            <dt>Maki</dt>
+            <dd>Ana-kyu</dd>
+            <dd>Chutoro</dd>
+            <dd>Kaiware</dd>
+            <dd>Kampyo</dd>
+            <dd>Kappa</dd>
+            <dd>Natto</dd>
+            <dd>Negitoro</dd>
+            <dd>Oshinko</dd>
+            <dd>Otoro</dd>
+            <dd>Tekka</dd>
+        </dl>
+
+        <dl class="list sashimi">
+            <dt>Sashimi</dt>
+            <dd>Maguro</dd>
+            <dd>Toro</dd>
+            <dd>Ebi</dd>
+            <dd>Saba</dd>
+            <dd>Ika</dd>
+            <dd>Tako</dd>
+            <dd>Tomago</dd>
+            <dd>Kani</dd>
+            <dd>Katsuo</dd>
+            <dd>Maguro</dd>
+        </dl>
+
+        <a href="#" class="toggle">Toggle</a>
+
+    </section>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script src="js/makisu.js"></script>
+    <script>
+
+        $( '.nigiri' ).makisu({
+            selector: 'dd',
+            overlap: 0.85,
+            speed: 1.7
+        });
+
+        $( '.maki' ).makisu({
+            selector: 'dd',
+            overlap: 0.6,
+            speed: 0.85
+        });
+
+        $( '.sashimi' ).makisu({
+            selector: 'dd',
+            overlap: 0.2,
+            speed: 0.5
+        });
+        
+        $( '.list' ).makisu( 'open' );
+
+        $( '.toggle' ).on( 'click', function() {
+            $( '.list' ).makisu( 'toggle' );
+            return false;
+        });
+
+    </script>
+</body>
+</html>
