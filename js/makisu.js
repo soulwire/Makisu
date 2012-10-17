@@ -262,6 +262,7 @@
 
             // Face styles
             utils.inject( '.face {' +
+                'pointer-events: none;' +
                 'position: absolute;' +
                 'display: block;' +
                 'height: 100%;' +
