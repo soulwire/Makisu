@@ -66,6 +66,8 @@
     <script src="js/makisu.js"></script>
     <script>
 
+        // Create Makisus
+
         $( '.nigiri' ).makisu({
             selector: 'dd',
             overlap: 0.85,
@@ -83,12 +85,20 @@
             overlap: 0.2,
             speed: 0.5
         });
+
+        // Open all
         
         $( '.list' ).makisu( 'open' );
 
+        // Toggle on click
+
         $( '.toggle' ).on( 'click', function() {
             $( '.list' ).makisu( 'toggle' );
-            return false;
+        });
+
+        // Disable all links
+        $( '.demo a' ).click( function( event ) {
+            event.preventDefault();
         });
 
     </script>
