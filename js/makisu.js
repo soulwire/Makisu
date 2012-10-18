@@ -26,10 +26,11 @@
     // Global initialisation flag
     var initialized = false;
 
-    // Detect browser prefix and capabilities
+    // For detecting browser prefix and capabilities
     var el = document.createElement( 'div' );
     var re = /^(Moz|(w|W)ebkit|O|ms)(?=[A-Z])/;
 
+    // Establish vendor prefix and CSS 3D support
     var vendor = (function() { for ( var p in el.style ) if( re.test(p) ) return p.match(re)[0]; })() || '';
     var canRun = vendor + 'Perspective' in el.style;
     var prefix = '-' + vendor.toLowerCase() + '-';
@@ -87,8 +88,9 @@
                 }));
             });
 
+            // Add momentum to the container
             $root.css(utils.prefix({
-                'animation': 'swing-out ' + ($kids.length * speed * (1 - overlap) * 1.4) + 's ease-in-out 0s 1 normal forwards'
+                'animation': 'swing-out ' + ( $kids.length * time * 1.4 ) + 's ease-in-out 0s 1 normal forwards'
             }));
 
             $this.addClass( 'open' );
@@ -134,8 +136,9 @@
                 }));
             });
 
+            // Add momentum to the container
             $root.css(utils.prefix({
-                'animation': 'swing-in ' + ($kids.length * speed * (1 - overlap) * 1.0) + 's ease-in-out 0s 1 normal forwards'
+                'animation': 'swing-in ' + ( $kids.length * time * 1.0 ) + 's ease-in-out 0s 1 normal forwards'
             }));
 
             $this.removeClass( 'open' );
@@ -182,6 +185,25 @@
 
     // Plugin definition
     $.fn.makisu = function( options ) {
+
+        // Notify if 3D isn't available
+        if ( !canRun ) {
+
+            var message = 'Failed to detect CSS 3D support';
+
+            if( console && console.warn ) {
+                
+                // Print warning to the console
+                console.warn( message );
+
+                // Trigger errors on elements
+                this.each( function() {
+                    $( this ).trigger( 'error', message );
+                });
+            }
+
+            return;
+        }
 
         // Fires only once
         if ( !initialized ) {
@@ -386,5 +408,7 @@
         // Animation curve
         easing: 'ease-in-out'
     };
+
+    $.fn.makisu.enabled = canRun;
 
 })( jQuery );

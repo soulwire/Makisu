@@ -62,46 +62,67 @@
 
     </section>
 
+    <div class="warning">
+        <div class="message">
+            <h1>CSS 3D Not Detected :(</h1>
+            <p>I couldn't detect your browser's CSS 3D capabilities. If I'm wrong, please <a href="https://github.com/soulwire/Makisu/issues" target="_blank">file an issue</a>, otherwise, try a <a href="www.google.com/chrome" target="_blank">sexier browser</a></p>
+        </div>
+    </div>
+
     <a href="https://github.com/soulwire/Makisu" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <script src="js/makisu.js"></script>
     <script>
 
-        // Create Makisus
+        // The `enabled` flag will be `false` if CSS 3D isn't available
 
-        $( '.nigiri' ).makisu({
-            selector: 'dd',
-            overlap: 0.85,
-            speed: 1.7
-        });
+        if ( $.fn.makisu.enabled ) {
 
-        $( '.maki' ).makisu({
-            selector: 'dd',
-            overlap: 0.6,
-            speed: 0.85
-        });
+            var $sashimi = $( '.sashimi' );
+            var $nigiri = $( '.nigiri' );
+            var $maki = $( '.maki' );
 
-        $( '.sashimi' ).makisu({
-            selector: 'dd',
-            overlap: 0.2,
-            speed: 0.5
-        });
+            // Create Makisus
 
-        // Open all
-        
-        $( '.list' ).makisu( 'open' );
+            $nigiri.makisu({
+                selector: 'dd',
+                overlap: 0.85,
+                speed: 1.7
+            });
 
-        // Toggle on click
+            $maki.makisu({
+                selector: 'dd',
+                overlap: 0.6,
+                speed: 0.85
+            });
 
-        $( '.toggle' ).on( 'click', function() {
-            $( '.list' ).makisu( 'toggle' );
-        });
+            $sashimi.makisu({
+                selector: 'dd',
+                overlap: 0.2,
+                speed: 0.5
+            });
 
-        // Disable all links
-        $( '.demo a' ).click( function( event ) {
-            event.preventDefault();
-        });
+            // Open all
+            
+            $( '.list' ).makisu( 'open' );
+
+            // Toggle on click
+
+            $( '.toggle' ).on( 'click', function() {
+                $( '.list' ).makisu( 'toggle' );
+            });
+
+            // Disable all links
+
+            $( '.demo a' ).click( function( event ) {
+                event.preventDefault();
+            });
+
+        } else {
+
+            $( '.warning' ).show();
+        }
 
     </script>
 </body>

@@ -164,7 +164,57 @@ a {
 }
 
 .toggle:hover {
+    
     background: #E42692;
+}
+
+/* No CSS 3D support warning */
+.warning {
+
+    -webkit-transform: translateZ(2px);
+    -moz-transform: translateZ(2px);
+    -ms-transform: translateZ(2px);
+    -o-transform: translateZ(2px);
+    transform: translateZ(2px);
+
+    background: rgba(255,255,255,0.6);
+    position: fixed;
+    display: none;
+    z-index: 999;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.warning .message {
+
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    text-align: center;
+    margin-left: -150px;
+    margin-top: -60px;
+    line-height: 1.5;
+    background: #222;
+    font-size: 12px;
+    position: absolute;
+    padding: 10px;
+    width: 280px;
+    color: #fff;
+    left: 50%;
+    top: 50%;
+}
+
+.warning .message h1 {
+
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.warning .message a {
+
+    text-decoration: none;
+    color: #73C8A9;
 }
 
 /* Individual styles */
