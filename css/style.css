@@ -30,17 +30,6 @@ body:before {
     top: 0;
 }
 
-body:after {
-
-    box-shadow: 0 1px 16px rgba(0,0,0,0.15);
-    background: #1b1b1b;
-    position: absolute;
-    content: '';
-    height: 10px;
-    width: 100%;
-    top: 0;
-}
-
 a {
 
     -webkit-transition: all 250ms cubic-bezier(0.230, 1.000, 0.320, 1.000);
@@ -78,6 +67,17 @@ a {
     font-size: 12px;
     color: rgba(0,0,0,0.7);
     margin: 0;
+}
+
+.demo:after {
+
+    box-shadow: 0 1px 16px rgba(0,0,0,0.15);
+    background: #1b1b1b;
+    position: absolute;
+    content: '';
+    height: 10px;
+    width: 100%;
+    top: 0;
 }
 
 /* List styles */
