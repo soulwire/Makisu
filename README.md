@@ -2,7 +2,7 @@
 
 An experimental CSS 3D dropdown concept, wrapped up in a [jQuery](http://jquery.com/) plugin.
 
-You can check out an example [here](http://soulwire.github.com/makisu.js/). You will need a CSS 3D capable browser, such as [Chrome](www.google.com/chrome).
+Check out the [demo](http://soulwire.github.com/Makisu/) _(you'll need a CSS 3D capable browser, such as [Chrome](www.google.com/chrome).)_
 
 #### Example usage
 
