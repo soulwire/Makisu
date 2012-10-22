@@ -4,6 +4,8 @@ An experimental CSS 3D dropdown concept, wrapped up in a [jQuery](http://jquery.
 
 Check out the [demo](http://soulwire.github.com/Makisu/) _(you'll need a CSS 3D capable browser, such as [Chrome](www.google.com/chrome).)_
 
+A current list of supported browsers can be found [here](http://caniuse.com/#search=3d%20transform).
+
 #### Example usage
 
 Use it like any regular jQuery plugin:
