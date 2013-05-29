@@ -27,13 +27,21 @@
     var initialized = false;
 
     // For detecting browser prefix and capabilities
-    var el = document.createElement( 'div' );
-    var re = /^(Moz|(w|W)ebkit|O|ms)(?=[A-Z])/;
+    var element = document.createElement( 'div' );
+    var vendors = 'moz ms o webkit'.split( ' ' );
+    var toupper = function( str ) { return str.toUpperCase(); };
 
     // Establish vendor prefix and CSS 3D support
-    var vendor = (function() { for ( var p in el.style ) if( re.test(p) ) return p.match(re)[0]; })() || '';
-    var canRun = vendor + 'Perspective' in el.style;
-    var prefix = '-' + vendor.toLowerCase() + '-';
+    var vendor;
+
+    for ( var prop, i = 0; i < vendors.length; i++ ) {
+
+        prop = ( vendor = vendors[i] ) + 'Perspective';
+        if ( prop in element.style || prop.replace( /^(\w)/, toupper ) in element.style ) break;
+    }
+
+    var canRun = !!vendor;
+    var prefix = '-' + vendor + '-';
 
     var $this, $root, $base, $kids, $node, $item, $over, $back;
     var wait, anim, last;
