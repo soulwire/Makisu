@@ -163,7 +163,7 @@
 
         // Prefixes a hash of styles with the current vendor
         prefix: function( style ) {
-            
+
             for ( var key in style ) {
                 style[ prefix + key ] = style[ key ];
             }
@@ -181,6 +181,17 @@
                 document.getElementsByTagName( 'head' )[0].appendChild( style );
 
             } catch ( error ) {}
+        },
+
+        keyframes: function( name, frames ) {
+
+            var anim = '@' + prefix + 'keyframes ' + name + '{';
+
+            for ( var frame in frames )
+
+                anim += frame + '%' + '{' + prefix + frames[ frame ] + ';}';
+
+            utils.inject( anim + '}' );
         }
     };
 
@@ -200,7 +211,7 @@
             var message = 'Failed to detect CSS 3D support';
 
             if( console && console.warn ) {
-                
+
                 // Print warning to the console
                 console.warn( message );
 
@@ -219,70 +230,59 @@
             initialized = true;
 
             // Unfold
-            utils.inject( '@' + prefix + 'keyframes unfold        {' +
 
-                '0%   {' + prefix + 'transform: rotateX(180deg);  }' +
-                '50%  {' + prefix + 'transform: rotateX(-30deg);  }' +
-                '100% {' + prefix + 'transform: rotateX(0deg);    }' +
-
-                '}');
+            utils.keyframes( 'unfold', {
+                  0: 'transform: rotateX(180deg)',
+                 50: 'transform: rotateX(-30deg)',
+                100: 'transform: rotateX(0deg)'
+            });
 
             // Unfold (first item)
-            utils.inject( '@' + prefix + 'keyframes unfold-first  {' +
-
-                '0%   {' + prefix + 'transform: rotateX(-90deg);  }' +
-                '50%  {' + prefix + 'transform: rotateX(60deg);   }' +
-                '100% {' + prefix + 'transform: rotateX(0deg);    }' +
-
-                '}');
+            utils.keyframes( 'unfold-first', {
+                  0: 'transform: rotateX(-90deg)',
+                 50: 'transform: rotateX(60deg)',
+                100: 'transform: rotateX(0deg)'
+            });
 
             // Fold
-            utils.inject( '@' + prefix + 'keyframes fold          {' +
-
-                '0%   {' + prefix + 'transform: rotateX(0deg);    }' +
-                '100% {' + prefix + 'transform: rotateX(180deg);  }' +
-
-                '}');
+            utils.keyframes( 'fold', {
+                  0: 'transform: rotateX(0deg)',
+                100: 'transform: rotateX(180deg)'
+            });
 
             // Fold (first item)
-            utils.inject( '@' + prefix + 'keyframes fold-first    {' +
-
-                '0%   {' + prefix + 'transform: rotateX(0deg);    }' +
-                '100% {' + prefix + 'transform: rotateX(-180deg); }' +
-
-                '}');
+            utils.keyframes( 'fold-first', {
+                  0: 'transform: rotateX(0deg)',
+                100: 'transform: rotateX(-180deg)'
+            });
 
             // Swing out
-            utils.inject( '@' + prefix + 'keyframes swing-out     {' +
-
-                '0%   {' + prefix + 'transform: rotateX(0deg);    }' +
-                '30%  {' + prefix + 'transform: rotateX(-30deg);  }' +
-                '60%  {' + prefix + 'transform: rotateX(15deg);   }' +
-                '100% {' + prefix + 'transform: rotateX(0deg);    }' +
-
-                '}');
+            utils.keyframes( 'swing-out', {
+                  0: 'transform: rotateX(0deg)',
+                 30: 'transform: rotateX(-30deg)',
+                 60: 'transform: rotateX(15deg)',
+                100: 'transform: rotateX(0deg)'
+            });
 
             // Swing in
-            utils.inject( '@' + prefix + 'keyframes swing-in      {' +
-
-                '0%   {' + prefix + 'transform: rotateX(0deg);    }' +
-                '50%  {' + prefix + 'transform: rotateX(-10deg);  }' +
-                '90%  {' + prefix + 'transform: rotateX(15deg);   }' +
-                '100% {' + prefix + 'transform: rotateX(0deg);    }' +
-
-                '}');
+            utils.keyframes( 'swing-in', {
+                  0: 'transform: rotateX(0deg)',
+                 50: 'transform: rotateX(-10deg)',
+                 90: 'transform: rotateX(15deg)',
+                100: 'transform: rotateX(0deg)'
+            });
 
             // Shading (unfold)
-            utils.inject( '@' + prefix + 'keyframes unfold-over   {' +
-                '0%   { opacity: 1.0; }' +
-                '100% { opacity: 0.0; }' +
-                '}');
+            utils.keyframes( 'unfold-over', {
+                  0: 'opacity: 1.0',
+                100: 'opacity: 0.0'
+            });
 
             // Shading (fold)
-            utils.inject( '@' + prefix + 'keyframes fold-over     {' +
-                '0%   { opacity: 0.0; }' +
-                '100% { opacity: 1.0; }' +
-                '}');
+            utils.keyframes( 'fold-over', {
+                  0: 'opacity: 0.0',
+                100: 'opacity: 1.0'
+            });
 
             // Node styles
             utils.inject( '.node {' +
@@ -330,7 +330,7 @@
                 // Build a scene graph for elements
                 $root = $( markup.node ).addClass( 'root' );
                 $base = $root;
-                
+
                 // Process each element and insert into hierarchy
                 $kids.each( function( index, el ) {
 
@@ -360,7 +360,7 @@
                         'background': opts.shading,
                         'opacity': 0.0
                     });
-                    
+
                     // Begin folded
                     $node = $( markup.node ).append( $item );
                     $node.css(utils.prefix({
