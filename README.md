@@ -1,4 +1,4 @@
-### Makisu
+## Makisu
 
 An experimental CSS 3D dropdown concept, wrapped up in a [jQuery](http://jquery.com/) plugin.
 
@@ -6,7 +6,7 @@ Check out the [demo](http://soulwire.github.com/Makisu/) _(you'll need a CSS 3D 
 
 A current list of supported browsers can be found [here](http://caniuse.com/#search=3d%20transform).
 
-#### Example usage
+### Example usage
 
 Use it like any regular jQuery plugin:
 
@@ -24,12 +24,12 @@ The options available are:
  - `shading` Default shading colour (`null` for no shading)
  - `perspective` Perspective to apply to 3D transformed objects
  
-#### API
+## API
 
 Once an element has been extended as in the example above, you can `open`, `close` and `toggle` it.
 
 	$( '.list' ).makisu( 'open' );
  
-#### Trivia
+## Trivia
 
 The name comes from the [object](http://en.wikipedia.org/wiki/Makisu) that inspired it.
